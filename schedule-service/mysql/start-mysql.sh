@@ -1,0 +1,1 @@
+sudo docker-compose -f mysql/mysql-compose.yml  up --build
