@@ -12,16 +12,16 @@ services:
     container_name: db
     ports:
       - 5432:5432
-#  spring-boot-jpa-app:
-#    image: spring-boot-jpa-image
-#    build:
-#      context: ./
-#      dockerfile: Dockerfile
-#    depends_on:
-#      - db
-#    ports:
-#      - 8087:8080
-#    volumes:
-#      - /data/spring-boot-app
+  spring-boot-jpa-app:
+    image: spring-boot-jpa-image
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 8087:8080
+    volumes:
+      - /data/spring-boot-app
 volumes:
   postgres_data:
