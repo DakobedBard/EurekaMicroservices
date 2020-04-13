@@ -1,37 +1,34 @@
 package com.example.movieinfo.resources;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.movieinfo.model.Movie;
+import com.example.movieinfo.model.MovieSummary;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-@Entity // This tells Hibernate to make a table out of this class
+@RestController
+@RequestMapping("/movies")
 public class MovieResource {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-    String name;
 
-    public MovieResource(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+//    @Value("${api.key}")
+//    private String apiKey;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @RequestMapping("/{movieId}")
+    public Movie getMovieInfo(@PathVariable("movieId") String movieId){
+        return new Movie(movieId,"Test name", "dexx");
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+//    @RequestMapping("/{movieId}")
+//    public Movie getMovieInfo(@PathVariable("movieId") String movieId) {
+//        MovieSummary movieSummary = restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" +  apiKey, MovieSummary.class);
+//        return new Movie(movieId, movieSummary.getTitle(), movieSummary.getOverview());
+//
+//    }
 
 }

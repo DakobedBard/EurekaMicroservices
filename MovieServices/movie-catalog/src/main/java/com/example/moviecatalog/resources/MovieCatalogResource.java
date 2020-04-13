@@ -21,21 +21,29 @@ public class MovieCatalogResource {
         @Autowired
         private RestTemplate restTemplate;
 
-
         @RequestMapping("/{userId}")
         public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
             RestTemplate restTemplate = new RestTemplate();
             // Get all rate movie IDs
-
-            // For each movie ID, call movie info servers
-            List<Rating> ratings = Arrays.asList(
-                    new Rating("The ring",2),
-                    new Rating("Bravheart",4)
-            );
-            return ratings.stream().map(rating -> {
+            UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratingsdata/users/users/"+userId,UserRating.class);
+            // This map over the .stream() is acting as a loop
+            return ratings.getRatings().stream().map(rating -> {
                     Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(), Movie.class);
                     return new CatalogItem(movie.getName(), "Desc", rating.getRating());
                     }).collect(Collectors.toList());
+
+
+            //            // For each movie ID, call movie info servers
+//            List<Rating> ratings = Arrays.asList(
+//                    new Rating("The ring",2),
+//                    new Rating("Bravheart",4)
+//            );
+
+//
+//            return ratings.stream().map(rating -> {
+//                    Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(), Movie.class);
+//                    return new CatalogItem(movie.getName(), "Desc", rating.getRating());
+//                    }).collect(Collectors.toList());
 
 //            ratings.stream().map(rating->{
 //                new CatalogItem("The Sixth Sense", "Scary Movie",5)

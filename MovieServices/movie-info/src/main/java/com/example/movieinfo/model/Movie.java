@@ -1,5 +1,7 @@
 package com.example.movieinfo.model;
 
+import javax.persistence.Entity;
+
 public class Movie {
     private String movieId;
     private String name;
