@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  db3:
+    image: postgres:12.0-alpine
+    volumes:
+      - ratingsdb_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=database1_role
+      - POSTGRES_PASSWORD=database1_password
+      - POSTGRES_DB=ratingsDB
+    container_name: db3
+    ports:
+      - 5434:5432
+
+volumes:
+  ratingsdb_data:
