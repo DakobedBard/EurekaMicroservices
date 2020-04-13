@@ -1,1 +1,1 @@
-docker exec -it db2 psql -d database1 -U database1_role
+docker exec -it db2 psql -d movieinfodb -U database1_role
