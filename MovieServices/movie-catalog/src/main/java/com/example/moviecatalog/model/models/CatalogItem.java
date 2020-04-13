@@ -1,4 +1,4 @@
-package com.example.moviecatalog.resources;
+package com.example.moviecatalog.model.models;
 
 public class CatalogItem {
     private String name;
