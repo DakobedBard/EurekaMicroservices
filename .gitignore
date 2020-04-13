@@ -1,4 +1,4 @@
-game-service/target
-player-service/target
-schedule-service/target
+NbaServices/game-service/target
+NbaServices/player-service/target
+NbaServices/schedule-service/target
 .idea

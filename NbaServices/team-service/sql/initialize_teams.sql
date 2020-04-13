@@ -24,10 +24,10 @@ INSERT INTO team (id,name, city,abrv) VALUES
     (23, 'Suns','Phoenix','PHX'),
     (24, 'Trail Blazers','Portland','POR'),
     (25, 'Kings','Sacremento','SAC'),
-    (26, 'Spurs','San Antonio','SAD'),
+    (26, 'Spurs','San Antonio','SAS'),
     (27, 'Jazz','Utah','UTA'),
     (28, 'Wizards','Washington','WAS'),
     (29, 'Timberwolves','Minnesota','MIN'),
-    (30, 'Warriors','GOLDENT STATE','GSW');
+    (30, 'Raptors','Toronto','RAPTORS');
 
     ;
